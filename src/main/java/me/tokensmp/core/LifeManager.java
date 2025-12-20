@@ -29,8 +29,12 @@ public class LifeManager {
 
     public void addLife(Player player, int amount) {
         setLives(player, getLives(player) + amount);
-    }
-
+   }
+   public void applyLife(Player player) {
+    int life = getLife(player);
+    player.setMaxHealth(20 + (life * 2));
+    player.setHealth(player.getMaxHealth());
+   }
     public void removeLife(Player player, int amount) {
         setLives(player, getLives(player) - amount);
         if (getLives(player) <= 0) {
