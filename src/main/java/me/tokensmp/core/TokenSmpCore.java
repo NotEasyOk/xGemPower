@@ -8,6 +8,7 @@ import me.tokensmp.core.token.TokenManager;
 import me.tokensmp.core.token.TokenListener;
 import org.bukkit.NamespacedKey;
 import me.tokensmp.core.token.UnlockRecipeListener;
+import me.tokensmp.core.life.TotemListener;
 
 public class TokenSmpCore extends JavaPlugin {
 
