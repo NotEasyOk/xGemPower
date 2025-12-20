@@ -1,7 +1,13 @@
 package me.tokensmp.core.token;
 
+import me.tokensmp.core.token.abilities.BlazeToken;
+import me.tokensmp.core.token.abilities.EndermanToken;
+import me.tokensmp.core.token.abilities.SkeletonToken;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class TokenListener implements Listener {
@@ -12,27 +18,32 @@ public class TokenListener implements Listener {
         this.tokenManager = tokenManager;
     }
 
+    // 🎲 First join → random token
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        // 🎲 First join → random token
         if (!event.getPlayer().hasPlayedBefore()) {
             tokenManager.giveRandomToken(event.getPlayer());
         }
     }
-}
-@EventHandler
-public void onUse(PlayerInteractEvent event) {
-    if (!event.getAction().toString().contains("RIGHT")) return;
 
-    Player player = event.getPlayer();
+    // 🔥 Ability use (Right Click)
+    @EventHandler
+    public void onUse(PlayerInteractEvent event) {
+        Action action = event.getAction();
 
-    if (!tokenManager.isTokenItem(player.getInventory().getItemInMainHand())) return;
+        if (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
 
-    TokenType type = tokenManager.getToken(player);
+        Player player = event.getPlayer();
 
-    switch (type) {
-        case ENDERMAN -> EndermanToken.useAbility(player);
-        case SKELETON -> SkeletonToken.useAbility(player);
-        case BLAZE -> BlazeToken.useAbility(player);
+        if (!tokenManager.isTokenItem(player.getInventory().getItemInMainHand())) return;
+
+        TokenType type = tokenManager.getToken(player);
+        if (type == null) return;
+
+        switch (type) {
+            case ENDERMAN -> EndermanToken.useAbility(player);
+            case SKELETON -> SkeletonToken.useAbility(player);
+            case BLAZE -> BlazeToken.useAbility(player);
+        }
     }
 }
