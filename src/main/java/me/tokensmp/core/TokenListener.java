@@ -1,15 +1,12 @@
 package me.tokensmp.core.token;
 
-import me.tokensmp.core.token.abilities.BlazeToken;
-import me.tokensmp.core.token.abilities.EndermanToken;
-import me.tokensmp.core.token.abilities.SkeletonToken;
+import me.tokensmp.core.token.abilities.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import me.tokensmp.core.token.abilities.*;
 
 public class TokenListener implements Listener {
 
@@ -19,7 +16,7 @@ public class TokenListener implements Listener {
         this.tokenManager = tokenManager;
     }
 
-    // 🎲 First join → random token
+    // First join → random token
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         if (!event.getPlayer().hasPlayedBefore()) {
@@ -27,12 +24,11 @@ public class TokenListener implements Listener {
         }
     }
 
-    // 🔥 Ability use (Right Click)
+    // Ability use
     @EventHandler
     public void onUse(PlayerInteractEvent event) {
-        Action action = event.getAction();
-
-        if (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() != Action.RIGHT_CLICK_AIR &&
+            event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         Player player = event.getPlayer();
 
@@ -41,14 +37,22 @@ public class TokenListener implements Listener {
         TokenType type = tokenManager.getToken(player);
         if (type == null) return;
 
+        int ability = 1; // abhi sirf ability-1 active
+
+        if (ability > 1 && !AbilityUnlockManager.isUnlocked(player.getUniqueId(), type, ability)) {
+            player.sendMessage("§cThis ability is locked!");
+            return;
+        }
+
         switch (type) {
-    
-    case ENDERMAN -> EndermanToken.useAbility(player);
-    case SKELETON -> SkeletonToken.useAbility(player);
-    case BLAZE -> BlazeToken.useAbility(player);
-    case CREEPER -> CreeperToken.useAbility(player);
-    case WITHER -> WitherToken.useAbility(player);
-    case WARDEN -> WardenToken.useAbility(player);
-    case BREEZE -> BreezeToken.useAbility(player);
-    case DOLPHIN -> DolphinToken.useAbility(player);
+            case ENDERMAN -> EndermanToken.useAbility(player);
+            case SKELETON -> SkeletonToken.useAbility(player);
+            case BLAZE -> BlazeToken.useAbility(player);
+            case CREEPER -> CreeperToken.useAbility(player);
+            case WITHER -> WitherToken.useAbility(player);
+            case WARDEN -> WardenToken.useAbility(player);
+            case BREEZE -> BreezeToken.useAbility(player);
+            case DOLPHIN -> DolphinToken.useAbility(player);
+        }
+    }
 }
