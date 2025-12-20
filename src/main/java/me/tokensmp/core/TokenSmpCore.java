@@ -7,6 +7,7 @@ import me.tokensmp.core.life.LifeCommand;
 import me.tokensmp.core.token.TokenManager;
 import me.tokensmp.core.token.TokenListener;
 import org.bukkit.NamespacedKey;
+import me.tokensmp.core.token.UnlockRecipeListener;
 
 public class TokenSmpCore extends JavaPlugin {
 
@@ -25,7 +26,8 @@ public class TokenSmpCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new LifeListener(lifeManager), this);
         getServer().getPluginManager().registerEvents(new TokenListener(tokenManager), this);
-
+        getServer().getPluginManager().registerEvents(new unlockRecipelistener(),this);
+        
         getCommand("tokens").setExecutor(new LifeCommand(lifeManager));
 
         getLogger().info("TokenSMP-Core ENABLED");
