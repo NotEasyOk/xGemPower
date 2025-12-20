@@ -20,3 +20,19 @@ public class TokenListener implements Listener {
         }
     }
 }
+@EventHandler
+public void onUse(PlayerInteractEvent event) {
+    if (!event.getAction().toString().contains("RIGHT")) return;
+
+    Player player = event.getPlayer();
+
+    if (!tokenManager.isTokenItem(player.getInventory().getItemInMainHand())) return;
+
+    TokenType type = tokenManager.getToken(player);
+
+    switch (type) {
+        case ENDERMAN -> EndermanToken.useAbility(player);
+        case SKELETON -> SkeletonToken.useAbility(player);
+        case BLAZE -> BlazeToken.useAbility(player);
+    }
+}
