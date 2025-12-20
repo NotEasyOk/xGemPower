@@ -6,6 +6,7 @@ import me.tokensmp.core.life.LifeListener;
 import me.tokensmp.core.life.LifeCommand;
 import me.tokensmp.core.token.TokenManager;
 import me.tokensmp.core.token.TokenListener;
+import org.bukkit.NamespacedKey;
 
 public class TokenSmpCore extends JavaPlugin {
 
@@ -16,7 +17,7 @@ public class TokenSmpCore extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
+        
         saveDefaultConfig();
 
         lifeManager = new LifeManager(this);
@@ -34,7 +35,10 @@ public class TokenSmpCore extends JavaPlugin {
     public void onDisable() {
         getLogger().info("TokenSMP-Core DISABLED");
     }
-
+    public NamespacedKey getNamespacedKey() {
+        return new NamespacedKey(this, "token_type");
+}
+    
     public static TokenSmpCore getInstance() {
         return instance;
     }
