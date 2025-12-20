@@ -7,8 +7,6 @@ import me.tokensmp.core.life.LifeCommand;
 import me.tokensmp.core.token.TokenManager;
 import me.tokensmp.core.token.TokenListener;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.player.PlayerInteractEvent;
-import me.tokensmp.core.token.abilities.*;
 
 public class TokenSmpCore extends JavaPlugin {
 
