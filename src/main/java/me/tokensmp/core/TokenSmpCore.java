@@ -27,6 +27,7 @@ public class TokenSmpCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LifeListener(lifeManager), this);
         getServer().getPluginManager().registerEvents(new TokenListener(tokenManager), this);
         getServer().getPluginManager().registerEvents(new unlockRecipelistener(),this);
+        getServer().getPluginManager().registerEvents(new TotemListener(), this);
         
         getCommand("tokens").setExecutor(new LifeCommand(lifeManager));
 
