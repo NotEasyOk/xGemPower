@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import me.tokensmp.core.token.abilities.*;
 
 public class TokenListener implements Listener {
 
@@ -41,9 +42,13 @@ public class TokenListener implements Listener {
         if (type == null) return;
 
         switch (type) {
-            case ENDERMAN -> EndermanToken.useAbility(player);
-            case SKELETON -> SkeletonToken.useAbility(player);
-            case BLAZE -> BlazeToken.useAbility(player);
-        }
-    }
+    
+    case ENDERMAN -> EndermanToken.useAbility(player);
+    case SKELETON -> SkeletonToken.useAbility(player);
+    case BLAZE -> BlazeToken.useAbility(player);
+    case CREEPER -> CreeperToken.useAbility(player);
+    case WITHER -> WitherToken.useAbility(player);
+    case WARDEN -> WardenToken.useAbility(player);
+    case BREEZE -> BreezeToken.useAbility(player);
+    case DOLPHIN -> DolphinToken.useAbility(player);
 }
