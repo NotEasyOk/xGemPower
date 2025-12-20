@@ -43,7 +43,18 @@ public class TokenListener implements Listener {
             player.sendMessage("§cThis ability is locked!");
             return;
         }
-
+        
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        if (!event.getPlayer().hasPlayedBefore()) {
+        Bukkit.getScheduler().runTaskLater(
+                TokenSmpCore.getInstance(),
+                () -> TokenScreenGUI.open(event.getPlayer(), tokenManager),
+                20L
+        );
+    }
+    }
+    
         switch (type) {
             case ENDERMAN -> EndermanToken.useAbility(player);
             case SKELETON -> SkeletonToken.useAbility(player);
