@@ -1,9 +1,7 @@
-name: Build xGemPower Plugin
+name: Build TokenSMP Plugin
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -11,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -23,9 +21,8 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
-      - name: Upload JAR artifact
+      - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: xGemPower
+          name: TokenSMP-JAR
           path: target/*.jar
-          
