@@ -1,0 +1,25 @@
+package me.tokensmp.core.token.abilities;
+
+import me.tokensmp.core.util.CooldownUtil;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+public class BreezeToken {
+
+    private static final int COOLDOWN = 60;
+
+    public static void useAbility(Player player) {
+
+        if (CooldownUtil.isOnCooldown("breeze_jump", player.getUniqueId(), COOLDOWN)) {
+            player.sendMessage("§cAbility on cooldown!");
+            return;
+        }
+
+        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 3));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 300, 0));
+
+        player.sendMessage("§bBreeze Lift!");
+        CooldownUtil.setCooldown("breeze_jump", player.getUniqueId());
+    }
+}
