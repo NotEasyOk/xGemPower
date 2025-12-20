@@ -1,4 +1,4 @@
-name: Build TokenSmp 2.0 Plugin
+name: Build xGemPower Plugin
 
 on:
   push:
