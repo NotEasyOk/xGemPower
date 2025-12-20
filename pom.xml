@@ -12,13 +12,6 @@
 
     <name>xGemPower</name>
 
-    <!-- ✅ JAVA VERSION -->
-    <properties>
-        <java.version>17</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <!-- ✅ PAPER REPO -->
     <repositories>
         <repository>
             <id>papermc</id>
@@ -26,7 +19,6 @@
         </repository>
     </repositories>
 
-    <!-- ✅ DEPENDENCY -->
     <dependencies>
         <dependency>
             <groupId>io.papermc.paper</groupId>
@@ -36,11 +28,8 @@
         </dependency>
     </dependencies>
 
-    <!-- ✅ BUILD -->
     <build>
         <plugins>
-
-            <!-- JAVA COMPILER -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -50,9 +39,7 @@
                     <target>17</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
 </project>
-              
