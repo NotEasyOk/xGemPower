@@ -27,4 +27,9 @@ public class LifeListener implements Listener {
         // 🔺 Killer gains 1 life
         lifeManager.addLife(killer, 1);
     }
-}
+   @EventHandler
+public void onKill(PlayerDeathEvent e) {
+    if (e.getEntity().getKiller() != null) {
+        addLife(e.getEntity().getKiller(), 1);
+    }
+}  
