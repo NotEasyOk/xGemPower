@@ -31,7 +31,17 @@ public class TokenManager {
 
     public void giveRandomToken(Player player) {
         if (hasToken(player)) return;
+        
+    public TokenSmpCore getPlugin() {
+       return plugin;
+   }
 
+    public void forceGiveToken(Player player, TokenType type) {
+        playerToken.put(player.getUniqueId(), type);
+    player.getInventory().addItem(createTokenItem(type));
+    player.sendMessage("§aYou received §e" + type.name() + " Token!");
+    }
+        
         TokenType token = TokenType.random();
         playerToken.put(player.getUniqueId(), token);
 
