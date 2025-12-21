@@ -11,7 +11,7 @@ public class DolphinToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("dolphin_swim", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("dolphin_swim", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -20,6 +20,6 @@ public class DolphinToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 300, 0));
 
         player.sendMessage("§3Dolphin Speed!");
-        CooldownUtil.setCooldown("dolphin_swim", player.getUniqueId());
+        CooldownManager.setCooldown("dolphin_swim", player.getUniqueId());
     }
           }
