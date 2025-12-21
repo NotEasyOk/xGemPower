@@ -11,7 +11,7 @@ public class DolphinToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownManager.isOnCooldown("dolphin_swim", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("dolphin_swim", player.getUniqueId())) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
