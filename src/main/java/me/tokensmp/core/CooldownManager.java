@@ -1,4 +1,4 @@
-package me.tokensmp.core.token;
+package me.tokensmp.core.cooldown;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,26 +6,26 @@ import java.util.UUID;
 
 public class CooldownManager {
 
-    private static final Map<UUID, Long> cooldown = new HashMap<>();
+    private static final Map<UUID, Long> cooldowns = new HashMap<>();
 
+    // Check cooldown
     public static boolean onCooldown(UUID uuid) {
-        return cooldown.containsKey(uuid) &&
-                cooldown.get(uuid) > System.currentTimeMillis();
+        if (!cooldowns.containsKey(uuid)) return false;
+        return cooldowns.get(uuid) > System.currentTimeMillis();
     }
-  
-    if (CooldownManager.onCooldown(player.getUniqueId())) {
-    player.sendMessage("§cCooldown: " +
-        CooldownManager.left(player.getUniqueId()) + "s");
-    return;
-}
 
-CooldownManager.set(player.getUniqueId(), 60);
-
+    // Set cooldown (seconds)
     public static void set(UUID uuid, int seconds) {
-        cooldown.put(uuid, System.currentTimeMillis() + (seconds * 1000L));
+        cooldowns.put(
+                uuid,
+                System.currentTimeMillis() + (seconds * 1000L)
+        );
     }
 
+    // Time left (seconds)
     public static long left(UUID uuid) {
-        return (cooldown.get(uuid) - System.currentTimeMillis()) / 1000;
+        if (!cooldowns.containsKey(uuid)) return 0;
+        return (cooldowns.get(uuid) - System.currentTimeMillis()) / 1000;
     }
 }
+
