@@ -16,7 +16,7 @@ public class BreezeToken {
             return;
         }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 3));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 300, 3));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 300, 0));
 
         player.sendMessage("§bBreeze Lift!");
