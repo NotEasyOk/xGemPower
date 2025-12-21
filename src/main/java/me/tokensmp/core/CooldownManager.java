@@ -6,20 +6,25 @@ import java.util.UUID;
 
 public class CooldownManager {
 
-    private static final Map<UUID, Long> cooldowns = new HashMap<>();
+    private static final Map<String, Map<UUID, Long>> cooldowns = new HashMap<>();
 
-    public static boolean onCooldown(UUID uuid) {
-        return cooldowns.containsKey(uuid)
-                && cooldowns.get(uuid) > System.currentTimeMillis();
+    // check cooldown
+    public static boolean onCooldown(String key, UUID uuid) {
+        if (!cooldowns.containsKey(key)) return false;
+        return cooldowns.get(key).getOrDefault(uuid, 0L) > System.currentTimeMillis();
     }
 
-    public static long left(UUID uuid) {
-        if (!cooldowns.containsKey(uuid)) return 0;
-        return (cooldowns.get(uuid) - System.currentTimeMillis()) / 1000;
+    // seconds left
+    public static long left(String key, UUID uuid) {
+        if (!cooldowns.containsKey(key)) return 0;
+        long time = cooldowns.get(key).getOrDefault(uuid, 0L) - System.currentTimeMillis();
+        return Math.max(0, time / 1000);
     }
 
-    public static void set(UUID uuid, int seconds) {
-        cooldowns.put(uuid, System.currentTimeMillis() + (seconds * 1000L));
+    // set cooldown
+    public static void set(String key, UUID uuid, int seconds) {
+        cooldowns.computeIfAbsent(key, k -> new HashMap<>())
+                .put(uuid, System.currentTimeMillis() + (seconds * 1000L));
     }
 }
 
