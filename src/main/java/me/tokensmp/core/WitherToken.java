@@ -11,7 +11,7 @@ public class WitherToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownManager.isOnCooldown("wither_aura", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("wither_aura", player.getUniqueId())) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -20,6 +20,6 @@ public class WitherToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 200, 2));
 
         player.sendMessage("§8Wither Aura Activated!");
-        CooldownManager.setCooldown("wither_aura", player.getUniqueId());
+        CooldownManager.setCooldown("wither_aura", player.getUniqueId(), COOLDOWN);
     }
 }
