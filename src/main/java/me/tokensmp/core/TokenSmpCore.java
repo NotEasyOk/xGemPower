@@ -13,38 +13,32 @@ import me.tokensmp.core.life.TotemListener;
 public class TokenSmpCore extends JavaPlugin {
 
     private static TokenSmpCore instance;
-    private LifeManager lifeManager;
     private TokenManager tokenManager;
+    private LifeManager lifeManager;
+    private NamespacedKey tokenKey;
 
     @Override
     public void onEnable() {
         instance = this;
-        
-        saveDefaultConfig();
+        tokenKey = new NamespacedKey(this, "token");
 
-        lifeManager = new LifeManager(this);
         tokenManager = new TokenManager(this);
-        dataManager = new DataManager(getDataFolder());
-        
-        getServer().getPluginManager().registerEvents(new LifeListener(lifeManager), this);
-        getServer().getPluginManager().registerEvents(new TokenListener(tokenManager), this);
-        getServer().getPluginManager().registerEvents(new unlockRecipelistener(),this);
-        getServer().getPluginManager().registerEvents(new TotemListener(), this);
-        
-        getCommand("tokens").setExecutor(new LifeCommand(lifeManager));
+        lifeManager = new LifeManager(this);
 
-        getLogger().info("TokenSMP-Core ENABLED");
+        getServer().getPluginManager().registerEvents(
+                new TokenListener(tokenManager), this
+        );
+        getServer().getPluginManager().registerEvents(
+                new LifeListener(lifeManager), this
+        );
     }
 
-    @Override
-    public void onDisable() {
-        getLogger().info("TokenSMP-Core DISABLED");
-    }
-    public NamespacedKey getNamespacedKey() {
-        return new NamespacedKey(this, "token_type");
-}
-    
     public static TokenSmpCore getInstance() {
         return instance;
     }
-  }
+
+    public NamespacedKey getTokenKey() {
+        return tokenKey;
+    }
+}
+
