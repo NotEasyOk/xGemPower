@@ -1,6 +1,6 @@
 package me.tokensmp.core.token.abilities;
 
-import me.tokensmp.core.util.CooldownUtil;
+import me.tokensmp.core.token.CooldownManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
