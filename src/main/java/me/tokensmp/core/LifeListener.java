@@ -19,7 +19,9 @@ public class LifeListener implements Listener {
         Player killer = dead.getKiller();
 
         // ❌ Natural death → no life loss
-        if (killer == null) return;
+        if (killer == null) {
+            return;
+        }
 
         // 🔻 Dead player loses 1 life
         lifeManager.removeLife(dead, 1);
@@ -27,9 +29,5 @@ public class LifeListener implements Listener {
         // 🔺 Killer gains 1 life
         lifeManager.addLife(killer, 1);
     }
-   @EventHandler
-public void onKill(PlayerDeathEvent e) {
-    if (e.getEntity().getKiller() != null) {
-        addLife(e.getEntity().getKiller(), 1);
-    }
-}  
+}
+
