@@ -11,7 +11,7 @@ public class CreeperToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownManager.isOnCooldown("creeper_orbit", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("creeper_orbit", player.getUniqueId())) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
