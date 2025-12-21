@@ -20,10 +20,6 @@ public class TokenManager {
         this.plugin = plugin;
     }
 
-    public TokenSmpCore getPlugin() {
-        return plugin;
-    }
-
     public boolean hasToken(Player player) {
         return playerToken.containsKey(player.getUniqueId());
     }
@@ -37,18 +33,16 @@ public class TokenManager {
 
         TokenType token = TokenType.random();
         playerToken.put(player.getUniqueId(), token);
-
         player.getInventory().addItem(createTokenItem(token));
-        player.sendMessage("§aYou received §e" + token.name() + " Token");
     }
 
-    private ItemStack createTokenItem(TokenType token) {
+    public ItemStack createTokenItem(TokenType token) {
         ItemStack item = new ItemStack(Material.EMERALD);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName("§6" + token.name() + " Token");
+        meta.setDisplayName("§a" + token.name() + " Token");
         meta.getPersistentDataContainer().set(
-                plugin.getNamespacedKey(),
+                plugin.getTokenKey(),
                 PersistentDataType.STRING,
                 token.name()
         );
@@ -60,7 +54,7 @@ public class TokenManager {
     public boolean isTokenItem(ItemStack item) {
         if (item == null || !item.hasItemMeta()) return false;
         return item.getItemMeta().getPersistentDataContainer()
-                .has(plugin.getNamespacedKey(), PersistentDataType.STRING);
+                .has(plugin.getTokenKey(), PersistentDataType.STRING);
     }
 }
 
