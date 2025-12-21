@@ -13,13 +13,13 @@ public class CooldownManager {
                 && cooldowns.get(uuid) > System.currentTimeMillis();
     }
 
-    public static void set(UUID uuid, int seconds) {
-        cooldowns.put(uuid, System.currentTimeMillis() + (seconds * 1000L));
-    }
-
     public static long left(UUID uuid) {
         if (!cooldowns.containsKey(uuid)) return 0;
         return (cooldowns.get(uuid) - System.currentTimeMillis()) / 1000;
+    }
+
+    public static void set(UUID uuid, int seconds) {
+        cooldowns.put(uuid, System.currentTimeMillis() + (seconds * 1000L));
     }
 }
 
