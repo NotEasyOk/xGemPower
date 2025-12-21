@@ -16,8 +16,8 @@ public class WardenToken {
             return;
         }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 300, 2));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 300, 4));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 300, 2));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 300, 4));
         player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 200, 1));
 
         player.sendMessage("§4Warden Power Awakened!");
