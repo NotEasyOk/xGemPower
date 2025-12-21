@@ -11,7 +11,7 @@ public class BreezeToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownManager.isOnCooldown("breeze_jump", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("breeze_jump", player.getUniqueId())) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
