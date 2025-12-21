@@ -12,7 +12,7 @@ public class EndermanToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("enderman_tp", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("enderman_tp", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -23,6 +23,6 @@ public class EndermanToken {
         player.teleport(loc);
         player.sendMessage("§5Enderman Teleport!");
 
-        CooldownUtil.setCooldown("enderman_tp", player.getUniqueId());
+        CooldownManager.setCooldown("enderman_tp", player.getUniqueId());
     }
           }
