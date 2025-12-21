@@ -11,7 +11,7 @@ public class WardenToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownManager.isOnCooldown("warden_op", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("warden_op", player.getUniqueId())) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -21,6 +21,6 @@ public class WardenToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 200, 1));
 
         player.sendMessage("§4Warden Power Awakened!");
-        CooldownManager.setCooldown("warden_op", player.getUniqueId());
+        CooldownManager.setCooldown("warden_op", player.getUniqueId(), COOLDOWN);
     }
 }
