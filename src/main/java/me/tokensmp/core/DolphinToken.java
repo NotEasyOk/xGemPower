@@ -20,6 +20,6 @@ public class DolphinToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 300, 0));
 
         player.sendMessage("§3Dolphin Speed!");
-        CooldownManager.setCooldown("dolphin_swim", player.getUniqueId());
+        CooldownManager.setCooldown("dolphin_swim", player.getUniqueId(), COOLDOWN);
     }
           }
