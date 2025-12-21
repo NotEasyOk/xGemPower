@@ -1,7 +1,6 @@
 package me.tokensmp.core.token;
 
 import me.tokensmp.core.TokenSmpCore;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,6 +20,10 @@ public class TokenManager {
         this.plugin = plugin;
     }
 
+    public TokenSmpCore getPlugin() {
+        return plugin;
+    }
+
     public boolean hasToken(Player player) {
         return playerToken.containsKey(player.getUniqueId());
     }
@@ -31,24 +34,12 @@ public class TokenManager {
 
     public void giveRandomToken(Player player) {
         if (hasToken(player)) return;
-        
-    public TokenSmpCore getPlugin() {
-       return plugin;
-   }
 
-    public void forceGiveToken(Player player, TokenType type) {
-        playerToken.put(player.getUniqueId(), type);
-    player.getInventory().addItem(createTokenItem(type));
-    player.sendMessage("§aYou received §e" + type.name() + " Token!");
-    }
-        
         TokenType token = TokenType.random();
         playerToken.put(player.getUniqueId(), token);
 
-        ItemStack item = createTokenItem(token);
-        player.getInventory().addItem(item);
-
-        player.sendMessage("§aYou received §e" + token.name() + " §aToken!");
+        player.getInventory().addItem(createTokenItem(token));
+        player.sendMessage("§aYou received §e" + token.name() + " Token");
     }
 
     private ItemStack createTokenItem(TokenType token) {
@@ -56,7 +47,6 @@ public class TokenManager {
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName("§6" + token.name() + " Token");
-
         meta.getPersistentDataContainer().set(
                 plugin.getNamespacedKey(),
                 PersistentDataType.STRING,
@@ -69,9 +59,8 @@ public class TokenManager {
 
     public boolean isTokenItem(ItemStack item) {
         if (item == null || !item.hasItemMeta()) return false;
-
         return item.getItemMeta().getPersistentDataContainer()
                 .has(plugin.getNamespacedKey(), PersistentDataType.STRING);
     }
-  }
-          
+}
+
