@@ -22,6 +22,6 @@ public class CreeperToken {
         tnt.setYield(6F);
 
         player.sendMessage("§aCreeper Orbital Strike!");
-        CooldownManager.setCooldown("creeper_orbit", player.getUniqueId());
+        CooldownManager.setCooldown("creeper_orbit", player.getUniqueId(), COOLDOWN);
     }
             }
