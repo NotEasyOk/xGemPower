@@ -22,4 +22,6 @@ public void onDeath(PlayerDeathEvent event) {
 
     lifeManager.removeLife(dead, 1);
     lifeManager.addLife(killer, 1);
+    
+    }
 }
