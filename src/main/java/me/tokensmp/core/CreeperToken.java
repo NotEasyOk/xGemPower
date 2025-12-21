@@ -11,7 +11,7 @@ public class CreeperToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("creeper_orbit", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("creeper_orbit", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -22,6 +22,6 @@ public class CreeperToken {
         tnt.setYield(6F);
 
         player.sendMessage("§aCreeper Orbital Strike!");
-        CooldownUtil.setCooldown("creeper_orbit", player.getUniqueId());
+        CooldownManager.setCooldown("creeper_orbit", player.getUniqueId());
     }
             }
