@@ -14,15 +14,12 @@ public class LifeListener implements Listener {
     }
 
     @EventHandler
-    public void onDeath(PlayerDeathEvent event) {
-        Player dead = event.getEntity();
-        Player killer = dead.getKiller();
+public void onDeath(PlayerDeathEvent event) {
+    Player dead = event.getEntity();
+    Player killer = dead.getKiller();
 
-        // Natural death → no life loss
-        if (killer == null) return;
+    if (killer == null) return; // natural death
 
-        lifeManager.removeLife(dead, 1);
-        lifeManager.addLife(killer, 1);
-    }
+    lifeManager.removeLife(dead, 1);
+    lifeManager.addLife(killer, 1);
 }
-
