@@ -12,7 +12,7 @@ public class SkeletonToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("skeleton_rain", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("skeleton_rain", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -29,6 +29,6 @@ public class SkeletonToken {
         }
 
         player.sendMessage("§7Skeleton Arrow Rain!");
-        CooldownUtil.setCooldown("skeleton_rain", player.getUniqueId());
+        CooldownManager.setCooldown("skeleton_rain", player.getUniqueId());
     }
           }
