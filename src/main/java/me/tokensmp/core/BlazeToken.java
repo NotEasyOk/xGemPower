@@ -10,7 +10,7 @@ public class BlazeToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("blaze_fire", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("blaze_fire", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -19,7 +19,7 @@ public class BlazeToken {
         fireball.setYield(3F);
 
         player.sendMessage("§6Blaze Fireball!");
-        CooldownUtil.setCooldown("blaze_fire", player.getUniqueId());
+        CooldownManager.setCooldown("blaze_fire", player.getUniqueId());
     }
             }
           
