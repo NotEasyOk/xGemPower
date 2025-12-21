@@ -11,7 +11,7 @@ public class BreezeToken {
 
     public static void useAbility(Player player) {
 
-        if (CooldownUtil.isOnCooldown("breeze_jump", player.getUniqueId(), COOLDOWN)) {
+        if (CooldownManager.isOnCooldown("breeze_jump", player.getUniqueId(), COOLDOWN)) {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
@@ -20,6 +20,6 @@ public class BreezeToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 300, 0));
 
         player.sendMessage("§bBreeze Lift!");
-        CooldownUtil.setCooldown("breeze_jump", player.getUniqueId());
+        CooldownManager.setCooldown("breeze_jump", player.getUniqueId());
     }
 }
