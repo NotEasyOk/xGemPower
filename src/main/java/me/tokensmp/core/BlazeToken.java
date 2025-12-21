@@ -19,7 +19,7 @@ public class BlazeToken {
         fireball.setYield(3F);
 
         player.sendMessage("§6Blaze Fireball!");
-        CooldownManager.setCooldown("blaze_fire", player.getUniqueId(), COLLDOWN);
+        CooldownManager.setCooldown("blaze_fire", player.getUniqueId(), COOLDOWN);
     }
             }
           
