@@ -20,6 +20,6 @@ public class BreezeToken {
         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 300, 0));
 
         player.sendMessage("§bBreeze Lift!");
-        CooldownManager.setCooldown("breeze_jump", player.getUniqueId());
+        CooldownManager.setCooldown("breeze_jump", player.getUniqueId(), COOLDOWN);
     }
 }
