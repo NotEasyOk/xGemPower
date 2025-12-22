@@ -27,6 +27,7 @@ public class TokenSmpCore extends JavaPlugin {
         tokenManager = new TokenManager(this);
         lifeManager = new LifeManager();
         lifeShieldManager = new LifeShieldManager(lifeManager);
+        
         getServer().getpluginManager().registerEvents(
             new TotemListener(this), this
         );
@@ -42,7 +43,9 @@ public class TokenSmpCore extends JavaPlugin {
     public static TokenSmpCore getInstance() {
         return instance;
     }
-
+    public LifeShieldManager getLifeShieldManager() {
+        retrun lifeShieldManager;
+    }
     public NamespacedKey getTokenKey() {
         return tokenKey;
     }
