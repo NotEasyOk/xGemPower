@@ -23,7 +23,7 @@ public class LifeShieldManager {
 
         if (left <= 0) {
             activeTotems.remove(player.getUniqueId());
-            LifeManager.addLife(player, 1);
+            lifeManager.addLife(player, 1);
             player.sendMessage("§aLife returned automatically!");
         } else {
             activeTotems.put(player.getUniqueId(), left);
