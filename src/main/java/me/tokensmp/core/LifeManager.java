@@ -11,7 +11,9 @@ public class LifeManager {
 
     private final Map<UUID, Integer> lives = new HashMap<>();
     private static final int MAX_LIFE = 5;
-
+    
+    public lifeManager() {}
+    
     // Get lives
     public int getLives(Player player) {
         return lives.getOrDefault(player.getUniqueId(), MAX_LIFE);
