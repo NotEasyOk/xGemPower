@@ -1,11 +1,6 @@
-name: TokenSmp 2.0
-version: 1.0
+name: xGemPower
+version: 1.0.0
 main: me.tokensmp.core.TokenSmpCore
 api-version: 1.21
 author: NotEasyOk
-
-commands:
-  tokens:
-    description: Token & Life command
-    usage: /tokens
-    
+description: Token SMP with Gems, Abilities & Life System
