@@ -11,8 +11,8 @@ public class TotemListener implements Listener {
     public void onTotem(EntityResurrectEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
 
-        if (LifeShieldManager.hasShield(player)) {
-            LifeShieldManager.consumeTotem(player);
+        if (lifeShieldManager.hasShield(player)) {
+            lifeShieldManager.consumeTotem(player);
         }
     }
 }
