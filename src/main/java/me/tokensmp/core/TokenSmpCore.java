@@ -15,6 +15,7 @@ public class TokenSmpCore extends JavaPlugin {
     private static TokenSmpCore instance;
     private TokenManager tokenManager;
     private LifeManager lifeManager;
+    private LifeShieldManager lifeShieldManager;
     private NamespacedKey tokenKey;
 
     @Override
@@ -24,7 +25,7 @@ public class TokenSmpCore extends JavaPlugin {
 
         tokenManager = new TokenManager(this);
         lifeManager = new LifeManager();
-
+        lifeShieldManager = new LifeShieldManager(lifeManager);
         getServer().getPluginManager().registerEvents(
                 new TokenListener(tokenManager), this
         );
