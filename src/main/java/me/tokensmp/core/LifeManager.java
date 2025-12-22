@@ -12,7 +12,7 @@ public class LifeManager {
     private final Map<UUID, Integer> lives = new HashMap<>();
     private static final int MAX_LIFE = 5;
     
-    public LifeManager() {}
+    public LifeManager() { }
     
     // Get lives
     public int getLives(Player player) {
