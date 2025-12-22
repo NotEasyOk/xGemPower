@@ -44,7 +44,7 @@ public class TokenSmpCore extends JavaPlugin {
         return instance;
     }
     public LifeShieldManager getLifeShieldManager() {
-        retrun lifeShieldManager;
+        return lifeShieldManager;
     }
     public NamespacedKey getTokenKey() {
         return tokenKey;
