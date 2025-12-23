@@ -40,11 +40,11 @@ public class TokenSmpCore extends JavaPlugin {
 
         // Register listeners
         getServer().getPluginManager().registerEvents(
-                new TokenListener(this), this
+                new TokenListener(tokenManager), this
         );
 
         getServer().getPluginManager().registerEvents(
-                new LifeListener(this), this
+                new LifeListener(lifeManager), this
         );
 
         getServer().getPluginManager().registerEvents(
