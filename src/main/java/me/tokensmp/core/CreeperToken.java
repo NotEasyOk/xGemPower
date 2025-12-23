@@ -15,8 +15,11 @@ public class CreeperToken {
             player.sendMessage("§cAbility on cooldown!");
             return;
         }
-
-        Location loc = player.getLocation().add(0, 15, 0);
+        
+        Block target = player.getTagetBlockExact(50);
+        if (target == null) return
+            
+        Location loc = target.getLocation().add(0, 20, 0);
         TNTPrimed tnt = loc.getWorld().spawn(loc, TNTPrimed.class);
         tnt.setFuseTicks(40);
         tnt.setYield(6F);
