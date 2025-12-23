@@ -36,7 +36,7 @@ public class TokenSmpCore extends JavaPlugin {
 
         tokenManager = new TokenManager(this);
         lifeManager = new LifeManager();
-        lifeShieldManager = new LifeShieldManager(lifeManager);
+        lifeShieldManager = new LifeShieldManager(this);
 
         // Register listeners
         getServer().getPluginManager().registerEvents(
@@ -48,7 +48,7 @@ public class TokenSmpCore extends JavaPlugin {
         );
 
         getServer().getPluginManager().registerEvents(
-                new TotemListener(lifeShieldManager), this
+                new TotemListener(this), this
         );
 
         getLogger().info("xGemPower enabled successfully!");
