@@ -13,20 +13,13 @@ public class LifeListener implements Listener {
         this.lifeManager = lifeManager;
     }
 
-    @EventHandler
+@EventHandler
 public void onDeath(PlayerDeathEvent event) {
-    Player player = event.getEntity();
+    Player dead = event.getEntity();
+    Player killer = dead.getKiller();
 
-    // ❌ TOKEN DROP STOP
-    event.getDrops().removeIf(item ->
-            tokenManager.isTokenItem(item)
-    );
+    if (killer == null) return; // natural death
 
-    // Natural death → no life loss
-    if (player.getKiller() == null) {
-        return;
-    }
-
-    lifeManager.removeLife(player, 1);
+    lifeManager.removeLife(dead, 1);
+    lifeManager.addLife(killer, 1);
 }
-
