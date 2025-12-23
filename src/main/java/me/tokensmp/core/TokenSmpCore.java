@@ -6,10 +6,10 @@ import me.tokensmp.core.life.LifeShieldManager;
 import me.tokensmp.core.life.TotemListener;
 import me.tokensmp.core.token.TokenListener;
 import me.tokensmp.core.token.TokenManager;
+import me.tokensmp.core.life.LifeCommand;
+import me.tokensmp.core.token.UnlockRecipeListener;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
-import me.tokensmp.core.life.LifeCommand
- import me.tokensmp.core.token.UnlockRecipeListener
     
 public class TokenSmpCore extends JavaPlugin {
 
